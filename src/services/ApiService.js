@@ -1,10 +1,11 @@
 import axios from 'axios';
+import { API_URL } from '../constants';
 
 const makeApiRequest = (config) => axios({
   ...config
 });
 
-export const ApiService = {
+const ApiService = {
     call: (
       method = 'get',
       endpoint,
@@ -16,7 +17,7 @@ export const ApiService = {
   disableTimeout = false
 ) => makeApiRequest({
   method,
-  url: endpoint,
+  url: API_URL + endpoint,
   data: body,
   params,
   headers,
@@ -25,3 +26,5 @@ export const ApiService = {
   timeout: disableTimeout ? undefined : 10000
 })
 };
+
+export default ApiService;

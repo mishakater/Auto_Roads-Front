@@ -1,7 +1,7 @@
 import { ApiService } from '../../../services';
 import { call } from 'redux-saga/effects';
 
-export function* request({
+function* request({
   method = 'get',
   endpoint,
   headers,
@@ -35,3 +35,5 @@ export function* request({
     return { error };
   }
 }
+
+export default request;

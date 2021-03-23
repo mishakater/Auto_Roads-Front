@@ -1,5 +1,5 @@
-export const API_URL = '';
+export const API_URL = 'http://localhost:3002';
 export const Endpoints = {
-  LOGIN: '',
-  REGISTER: '',
+  LOGIN: '/api/user/login',
+  REGISTER: '/api/user/register',
 };
