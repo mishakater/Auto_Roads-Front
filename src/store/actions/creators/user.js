@@ -10,3 +10,7 @@ export const register = withCallbacks(({ email, password, name }) => ({
   type: UserActionTypes.REGISTER,
   payload: { email, password, name }
 }))
+
+export const logout = withCallbacks(() => ({
+  type: UserActionTypes
+}));

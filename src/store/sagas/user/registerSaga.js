@@ -12,7 +12,7 @@ function* registerSaga({ request, action, dispatchResponse }) {
     { data, error },
     UserActionTypes.REGISTER_SUCCESS,
     UserActionTypes.REGISTER_ERROR,
-  )
+  );
 }
 
 export default registerSaga;

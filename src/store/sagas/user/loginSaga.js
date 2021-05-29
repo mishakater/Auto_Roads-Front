@@ -12,7 +12,7 @@ function* loginSaga({ request, action, dispatchResponse }) {
     { data, error },
     UserActionTypes.LOGIN_SUCCESS,
     UserActionTypes.LOGIN_ERROR,
-  )
+  );
 }
 
 export default loginSaga;

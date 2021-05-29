@@ -1,4 +1,5 @@
 export const ReducerKeys = {
   APP: 'app',
-  USER: 'user'
+  USER: 'user',
+  ROADS: 'roads'
 };

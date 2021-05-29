@@ -37,3 +37,6 @@ export const by = (...args) => {
 };
 
 export const display = (data, render) => render(data);
+
+export const sum = (...terms) => terms.reduce((a, t) => a + t, 0);
+export const mean = (...xs) => sum(...xs) / xs.length;

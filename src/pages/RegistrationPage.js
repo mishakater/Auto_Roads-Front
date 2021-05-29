@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button, Input, TextField } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { Routes } from '../constants';
