@@ -16,24 +16,6 @@ const mean = (arr) => {
 
 const mf = (arr) => arr.reduce((avg, x, i) => avg + (x - avg) / (i + 1), arr[0]);
 
-const mergeMean = (xs) => {
-  return xs.reduce((avg, x, i) => {
-    return Object.keys(x).reduce((acc, key) => {
-      if (typeof x[key] === 'object') {
-        return {
-          ...acc,
-          [key]: mergeMean(xs.map(i => i[key]))
-        };
-      }
-
-      return {
-         ...acc,
-        [key]: avg[key] + (x[key] - avg[key]) / (i + 1),
-      };
-    }, {})
-  }, xs[0]);
-};
-
 
 const input = [
   {

@@ -1,7 +1,10 @@
 import React from 'react';
+import { Rating } from '@material-ui/lab';
 import styled from 'styled-components';
+import { mergeMean } from '../../utils';
 
-const RoadCard = ({ onClick, roadName, region, direction, length, _id }) => {
+const RoadCard = ({ onClick, roadName, region, direction, length, _id, ratings }) => {
+  const mergedRatings = ratings.length ? mergeMean(ratings) : {};
 
   const handleClick = () => {
     onClick?.(_id);
@@ -10,7 +13,7 @@ const RoadCard = ({ onClick, roadName, region, direction, length, _id }) => {
   return (
     <Container onClick={handleClick}>
       <Row><div>{roadName}</div><div>{length} miles</div></Row>
-      <Row><div>@TODO: rating</div><div>{region} - {direction}</div></Row>
+      <Row><div><Rating readOnly precision={0.1} value={mergedRatings.mean} max={10} /></div><div>{region} - {direction}</div></Row>
     </Container>
   );
 };
