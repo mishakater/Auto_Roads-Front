@@ -16,8 +16,14 @@ const rootReducer = combineReducers({
     },
     appReducer
   ),
-  [ReducerKeys.USER]: userReducer,
-  [ReducerKeys.ROADS]: roadsReducer,
+  [ReducerKeys.USER]: persistReducer({
+    key: ReducerKeys.USER,
+    storage,
+  }, userReducer),
+  [ReducerKeys.ROADS]: persistReducer({
+    key: ReducerKeys.ROADS,
+    storage,
+  }, roadsReducer),
 });
 
 export default rootReducer;
