@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { roadSelector } from '../store/selectors/roads';
 import { Button } from '@material-ui/core';
-import { rateRoad, searchRoads } from '../store/actions/creators';
+import { commentRoad, rateRoad, searchRoads } from '../store/actions/creators';
 import { userSelector } from '../store/selectors/user';
 import { Header } from '../components';
 import styled from 'styled-components';
@@ -16,6 +16,7 @@ const RoadProfilePage = () => {
   const road = useSelector(roadSelector(id));
   const user = useSelector(userSelector);
   const mergedRatings = road?.ratings?.length ? mergeMean(road?.ratings) : {};
+  const [comment, setComment] = useState('');
   const [rateState, setRateState] = useState({
     artificialConstructions: mergedRatings.artificialConstructions,
     engineeringArrangement: mergedRatings.engineeringArrangement,
@@ -51,6 +52,23 @@ const RoadProfilePage = () => {
       criteria: rateState,
       onSuccess: () => {
         dispatch(searchRoads({ query: '' }))
+      }
+    }));
+  };
+
+  const handleCommentChange = ({ target: { value } }) => {
+    setComment(value);
+  };
+
+  const handleComment = () => {
+    dispatch(commentRoad({
+      id: road._id,
+      userId: user._id,
+      userName: user.email,
+      text: comment,
+      onSuccess: () => {
+        dispatch(searchRoads({ query: '' }));
+        setComment('');
       }
     }));
   };
@@ -97,6 +115,20 @@ const RoadProfilePage = () => {
       </Row>
 
       <Button variant="outlined" onClick={handleRate}>rate</Button>
+
+        <Comments>
+          {road.comments.map(comment => (
+            <Comment>
+              <UserEmail>
+              {comment.userName}
+              </UserEmail>
+
+              {comment.text}
+            </Comment>
+          ))}
+        </Comments>
+        <textarea style={{ margin: '20px 0' }} value={comment} onChange={handleCommentChange} />
+        <Button variant="outlined" disabled={!comment.length} onClick={handleComment}>comment</Button>
       </Content>
     </div>
   );
@@ -114,6 +146,26 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   padding: 100px 30px;
+`;
+
+const Comments = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px;
+`;
+
+const Comment = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px;
+  background: lightblue;
+  border-radius: 8px;
+  margin: 2px 0;
+`;
+
+const UserEmail = styled.div`
+  font-weight: 500;
+  margin-bottom: 10px;
 `;
 
 export default RoadProfilePage;

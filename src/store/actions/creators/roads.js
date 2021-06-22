@@ -36,3 +36,10 @@ export const rateRoad = withCallbacks(({
     }
   }
 }));
+
+export const commentRoad = withCallbacks(({ id, userId, text, userName }) => ({
+  type: RoadsActionTypes.COMMENT,
+  payload: {
+    roadId: id, userId, text, userName
+  }
+}));

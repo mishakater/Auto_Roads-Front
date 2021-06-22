@@ -9,4 +9,5 @@ export const Endpoints = {
   GET_PROFILE: '/api/user/profile',
   UPDATE_PROFILE: '/api/user/profile',
   RATE_ROAD: '/api/ratings/rate',
+  COMMENT_ROAD: '/api/comments',
 };

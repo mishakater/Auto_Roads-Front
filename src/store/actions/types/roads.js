@@ -8,6 +8,9 @@ const RoadsActionTypes = {
   RATE: 'roads/RATE',
   RATE_SUCCESS: 'roads/RATE_SUCCESS',
   RATE_ERROR: 'roads/RATE_ERROR',
+  COMMENT: 'roads/COMMENT',
+  COMMENT_SUCCESS: 'roads/COMMENT_SUCCESS',
+  COMMENT_ERROR: 'roads/COMMENT_ERROR',
 };
 
 export default RoadsActionTypes;
